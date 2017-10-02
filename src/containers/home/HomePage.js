@@ -7,14 +7,17 @@ import * as searchActions from '../../actions/searchActions';
 export class HomePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
     this.state = {
       query: Object.assign({}, props.query),
       placeholder: 'Username',
       errors: {},
       saving: false
     };
+
     this.updateSearchQuery = this.updateSearchQuery.bind(this);
     this.doSearch = this.doSearch.bind(this);
+    this.renderProfile = this.renderProfile.bind(this);
   }
 
   updateSearchQuery(event) {
@@ -26,43 +29,56 @@ export class HomePage extends React.Component {
 
   doSearch(event) {
     event.preventDefault();
-
     this.setState({ saving: true });
-    debugger;
     this.props.actions.loadProfile(this.state.query)
-      .then((profile) => {
-        console.log(profile);
-        this.setState({ saving: false });
-
-      })
+      .then(() => { this.setState({ saving: false }); })
       .catch(error => {
-        throw (error);
+        alert(error);
+        this.setState({ saving: false });
       });
   }
 
+  renderProfile() {
+    const { profile } = this.props;
+    return profile.map(function (data) {
+      return (<div key={data.id} >
+                <img src={data.avatar_url} alt="profile photo"/>
+                <h2>{data.name}</h2>
+              </div>);
+    });
+  }
   render() {
+
     return (
-      <SearchForm
-        onSave={this.doSearch}
-        onChange={this.updateSearchQuery}
-        query={this.state.query}
-        placeholder={this.state.placeholder}
-        errors={this.state.errors}
-        saving={this.state.saving} />
+      <div>
+        <SearchForm
+          onSave={this.doSearch}
+          onChange={this.updateSearchQuery}
+          query={this.state.query}
+          placeholder={this.state.placeholder}
+          errors={this.state.errors}
+          saving={this.state.saving} />
+        {!this.props.loading && this.renderProfile()}
+      </div>
     );
   }
 }
 
 HomePage.propTypes = {
   query: PropTypes.object,
+  profile: PropTypes.array,
   placeholder: PropTypes.string,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
   let query = state.query ? state.query : { keyword: '', repo: '' };
+  let profile = state.search ? [state.search] : [];
   return {
-    query: { keyword: query.keyword, repo: query.repo }
+    query: { keyword: query.keyword, repo: query.repo },
+    profile: profile,
+    loading: state.ajaxCallsInProgress > 0
   };
 }
 

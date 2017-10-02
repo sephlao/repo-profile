@@ -6,11 +6,11 @@ import SelectInput from './common/SelectInput';
 const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) => {
   const repos = [{text: 'GitHub', value: 'github'},{text: 'BitBucket', value: 'bitbucket'}];
   return (
-    <form>
+    <form onSubmit={onSave}>
 
       <SelectInput
         name="repo"
-        label="Repository"
+        label="Repository *"
         value={query.repo}
         defaultOption="Select Repository"
         options={repos}
@@ -19,18 +19,18 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
 
       <TextInput
         name="keyword"
-        label="Keyword"
+        label="Keyword *"
         value={query.keyword}
         placeholder={placeholder}
         onChange={onChange}
         error={errors.keyword} />
 
-      <input
+      {/* <input
         type="submit"
         disabled={saving}
-        value={saving ? 'Saving...' : 'Save'}
+        value={saving ? 'Searching...' : 'Search'}
         className="btn btn-primary"
-        onClick={onSave} />
+        onClick={onSave} /> */}
     </form>
   );
 };

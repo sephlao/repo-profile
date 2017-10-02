@@ -8,6 +8,11 @@ describe('Testing HomePage component', () => {
   it('should render search form', () => {
     const props = {
       query: { keyword: '', repo: ''},
+      profile: [],
+      loading: false,
+      actions: {
+        loadProfile: () => { return Promise.resolve(); }
+      }
     };
 
     const wrapper = mount(<HomePage {...props} />);

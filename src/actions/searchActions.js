@@ -7,12 +7,9 @@ export function loadProfileSuccess(profile) {
 }
 
 export function loadProfile(params) {
-  console.log(params);
-  debugger;
   return function(dispatch){
     dispatch(ajaxCallBegin());
     return githubApi.getProfile(params.keyword).then(profile => {
-      console.log(profile);
       dispatch(loadProfileSuccess(profile));
     }).catch(error => {
       dispatch(ajaxCallFail());
