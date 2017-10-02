@@ -6,7 +6,7 @@ import SelectInput from './common/SelectInput';
 const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) => {
   const repos = [{text: 'GitHub', value: 'github'},{text: 'BitBucket', value: 'bitbucket'}];
   return (
-    <form onSubmit={onSave}>
+    <form onSubmit={onSave} disabled={saving}>
 
       <SelectInput
         name="repo"
