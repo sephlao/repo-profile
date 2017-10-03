@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch, NavLink, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HomePage from '../containers/home/HomePage';
+import TrendingPage from '../containers/trending/TrendingPage';
 import Loading from '../components/common/Loader';
 
 // This is a class-based component because the current
@@ -25,6 +26,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/profile" component={HomePage} />
+          <Route exact path="/trending" component={TrendingPage} />
         </Switch>
         {this.props.loading && <Loading />}
       </div>

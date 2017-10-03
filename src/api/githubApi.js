@@ -1,5 +1,6 @@
 
 const apiUsername = username => `https://api.github.com/users/${username}`;
+const apiTrendingTech = technology => `https://api.github.com/search/repositories?q=language:${technology}&sort=stars&order=desc`;
 
 
 class githubApi {
@@ -7,13 +8,30 @@ class githubApi {
     return fetch(apiUsername(username))
       .then(response => {
         if (!response.ok) {
-          throw Error(username + ' '+ response.statusText.toLocaleLowerCase());
+          throw Error(username + ' ' + response.statusText.toLocaleLowerCase());
         }
         return response;
       })
       .then(data => {
         return data.json();
-      }).then(data => {
+      })
+      .then(data => {
+        return data;
+      });
+  }
+
+  static getTrending(technology) {
+    return fetch(apiTrendingTech(technology))
+      .then(response => {
+        if (!response.ok) {
+          throw Error(technology + ' ' + response.statusText.toLocaleLowerCase());
+        }
+        return response;
+      })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
         return data;
       });
   }
