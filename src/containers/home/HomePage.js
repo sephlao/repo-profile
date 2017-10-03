@@ -42,22 +42,24 @@ export class HomePage extends React.Component {
     const { profile } = this.props;
     return profile.map(function (data) {
       return (<div key={data.id} >
-                <img src={data.avatar_url} alt="profile photo"/>
-                <h2>{data.name}</h2>
-              </div>);
+        <img src={data.avatar_url} alt="profile photo" />
+        <h2>{data.name}</h2>
+      </div>);
     });
   }
   render() {
 
     return (
       <div>
-        <SearchForm
-          onSave={this.doSearch}
-          onChange={this.updateSearchQuery}
-          query={this.state.query}
-          placeholder={this.state.placeholder}
-          errors={this.state.errors}
-          saving={this.state.saving} />
+        <div className="jumbotron">
+          <SearchForm
+            onSave={this.doSearch}
+            onChange={this.updateSearchQuery}
+            query={this.state.query}
+            placeholder={this.state.placeholder}
+            errors={this.state.errors}
+            saving={this.state.saving} />
+        </div>
         {!this.props.loading && this.renderProfile()}
       </div>
     );
