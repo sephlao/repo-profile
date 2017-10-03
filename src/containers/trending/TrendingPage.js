@@ -40,8 +40,12 @@ export class TrendingPage extends React.Component {
   }
 
   renderTrending() {
-    // const { trending } = this.props;
-    return (<Trending />);
+    const { trending } = this.props;
+    return trending.map((data) => {
+      return (<div key={data.id}>
+        <Trending trending={data} />
+      </div>);
+    });
   }
 
   render() {
@@ -64,7 +68,7 @@ export class TrendingPage extends React.Component {
 
 TrendingPage.propTypes = {
   query: PropTypes.object,
-  profile: PropTypes.array,
+  trending: PropTypes.array,
   placeholder: PropTypes.string,
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired

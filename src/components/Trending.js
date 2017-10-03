@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 const Trending = ({ trending }) => {
   return (
     <div className="row">
-      Trending page {trending}
+      Trending page
+      <pre>
+        {JSON.stringify(trending, null, 2)}
+      </pre>
     </div>
   );
 };
