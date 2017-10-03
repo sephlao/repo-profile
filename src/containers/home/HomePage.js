@@ -25,7 +25,7 @@ export class HomePage extends React.Component {
     const field = event.target.name;
     let query = Object.assign({}, this.state.query);
     query[field] = event.target.value;
-    return this.setState({ query: query });
+    return this.setState({ query });
   }
 
   doSearch(event) {
