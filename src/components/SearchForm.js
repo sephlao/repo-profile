@@ -38,10 +38,10 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
 SearchForm.propTypes = {
   query: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
-  onSave: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  saving: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  onSave: PropTypes.func,
+  onChange: PropTypes.func,
+  saving: PropTypes.bool,
+  errors: PropTypes.object
 };
 
 export default SearchForm;
