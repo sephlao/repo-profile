@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './common/TextInput';
-import SelectInput from './common/SelectInput';
+import RadioInput from './common/RadioInput';
 
 const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) => {
   const repos = [{text: 'GitHub', value: 'github'},{text: 'BitBucket', value: 'bitbucket'}];
   return (
     <form onSubmit={onSave} disabled={saving}>
 
-      <SelectInput
+      <RadioInput
         name="repo"
-        label="Repository *"
+        label="Repository"
         value={query.repo}
-        defaultOption="Select Repository"
+        defaultOption={repos[0].value}
         options={repos}
         onChange={onChange}
         error={errors.repo} />
