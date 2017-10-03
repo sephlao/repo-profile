@@ -7,7 +7,7 @@ class Loading extends React.Component {
   }
 
   render() {
-    return (<div><img src={LoadingSvg} alt="Loading" /></div>);
+    return (<div style={{textAlign: 'center'}}><img src={LoadingSvg} alt="Loading" /></div>);
   }
 }
 

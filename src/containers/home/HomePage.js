@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SearchForm from '../../components/SearchForm';
+import Profile from '../../components/Profile';
 import * as searchActions from '../../actions/searchActions';
 export class HomePage extends React.Component {
   constructor(props, context) {
@@ -41,9 +42,8 @@ export class HomePage extends React.Component {
   renderProfile() {
     const { profile } = this.props;
     return profile.map(function (data) {
-      return (<div key={data.id} >
-        <img src={data.avatar_url} alt="profile photo" />
-        <h2>{data.name}</h2>
+      return (<div key={data.id}>
+        <Profile profile={data} />
       </div>);
     });
   }
