@@ -1,5 +1,5 @@
 export default {
   ajaxCallsInProgress: 0,
-  profile: '',
-  trending: '',
+  profile: null,
+  trending: null
 };

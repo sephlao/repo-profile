@@ -41,7 +41,7 @@ export class HomePage extends React.Component {
 
   renderProfile() {
     const { profile } = this.props;
-    return <Profile profile={profile} />;
+      return <Profile profile={profile} />;      
   }
 
   render() {
@@ -56,7 +56,7 @@ export class HomePage extends React.Component {
             errors={this.state.errors}
             saving={this.state.saving} />
         </div>
-        {!this.props.loading && this.renderProfile()}
+        {(!this.props.loading && this.props.profile) && this.renderProfile()}
       </div>
     );
   }
@@ -72,7 +72,7 @@ HomePage.propTypes = {
 
 function mapStateToProps(state) {
   let query = state.query ? state.query : { keyword: '', repo: '' };
-  let profile = state.search ? state.search : {};
+  let profile = state.profile;
   return {
     query: { keyword: query.keyword, repo: query.repo },
     profile,

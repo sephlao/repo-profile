@@ -41,7 +41,7 @@ export class TrendingPage extends React.Component {
 
   renderTrending() {
     const { trending } = this.props;
-    return <Trending trending={trending}/>;
+    return <Trending trending={trending} />;
   }
 
   render() {
@@ -56,7 +56,7 @@ export class TrendingPage extends React.Component {
             errors={this.state.errors}
             saving={this.state.saving} />
         </div>
-        {!this.props.loading && this.renderTrending()}
+        {(!this.props.loading && this.props.trending) && this.renderTrending()}
       </div>
     );
   }
@@ -72,7 +72,7 @@ TrendingPage.propTypes = {
 
 function mapStateToProps(state) {
   let query = state.query ? state.query : { keyword: '', repo: '' };
-  let trending = state.search ? state.search : {};
+  let trending = state.trending;
   return {
     query: { keyword: query.keyword, repo: query.repo },
     trending,
