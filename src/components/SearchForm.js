@@ -21,7 +21,8 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
         value={query.keyword}
         placeholder={placeholder}
         onChange={onChange}
-        error={errors.keyword} />
+        error={errors.keyword}
+        onSave={onSave}/>
 
       {/* <input
         type="submit"

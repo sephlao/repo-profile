@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = ({ name, onChange, placeholder, value, error }) => {
+const TextInput = ({ name, onChange, placeholder, value, error, onSave }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += " " + 'has-error';
@@ -19,8 +19,9 @@ const TextInput = ({ name, onChange, placeholder, value, error }) => {
             placeholder={placeholder}
             onChange={onChange}
             autoFocus={!value}
-            autoComplete="off"/>
-          <div className="input-group-addon">
+            autoComplete="off" />
+          <div className="input-group-addon cursor-pointer"
+            onClick={onSave}>
             <i className="fa fa-search">&nbsp;</i>
           </div>
         </div>
