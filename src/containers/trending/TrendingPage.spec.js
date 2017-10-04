@@ -6,7 +6,7 @@ describe('Testing TrendingPage component', () => {
   it('should render search form', () => {
     const props = {
       query: { keyword: '', repo: '' },
-      trending: [],
+      trending: {},
       loading: false,
       actions: {
         loadTrending: () => { return Promise.resolve(); }

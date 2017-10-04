@@ -1,6 +1,7 @@
 
+const date = new Date().toISOString();
 const apiUsername = username => `https://api.github.com/users/${username}`;
-const apiTrendingTech = technology => `https://api.github.com/search/repositories?q=language:${technology}&sort=stars&order=desc`;
+const apiTrendingTech = technology => `https://api.github.com/search/repositories?q=language:${technology},created:${date}&sort=star&order=desc`;
 
 
 class githubApi {
