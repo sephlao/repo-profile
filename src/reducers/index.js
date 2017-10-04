@@ -1,11 +1,13 @@
  import { combineReducers } from 'redux';
  import { routerReducer } from 'react-router-redux';
- import search from './searchReducer';
+ import profile from './profileReducer';
+ import trending from './trendingReducer';
  import ajaxCallsInProgress from './ajaxStatusReducer';
 
  const rootReducer = combineReducers({
    routing: routerReducer,
-   search,
+   profile,
+   trending,
    ajaxCallsInProgress
  });
  
