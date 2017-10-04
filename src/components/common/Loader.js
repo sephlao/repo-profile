@@ -8,10 +8,10 @@ class Loading extends React.Component {
   render() {
     return (<div id="query-loader">
       <div className="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
 
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
