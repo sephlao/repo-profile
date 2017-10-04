@@ -8,7 +8,7 @@ const RadioInput = ({ name, onChange, defaultOption, value, error, options }) =>
     <div className="form-group">
       <div className="field btn-group" data-toggle="buttons">
         {options.map(option => {
-          return (<label className={`btn btn-primary ${value === option.value ? "active-repo-radio" : ""}`}
+          return (<label className={`btn btn-primary cursor-pointer ${value === option.value ? "active-repo-radio" : ""}`}
             key={option.value} htmlFor={option.value}>
             <input type="radio"
               name={name}
