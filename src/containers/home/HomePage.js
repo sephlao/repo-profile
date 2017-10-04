@@ -10,7 +10,7 @@ export class HomePage extends React.Component {
     super(props, context);
 
     this.state = {
-      query: Object.assign({}, props.query),
+      query: (props.profile) ? { ...props.query, keyword: props.profile.login } : Object.assign({}, props.query),
       placeholder: 'Username',
       errors: {},
       saving: false
@@ -41,7 +41,7 @@ export class HomePage extends React.Component {
 
   renderProfile() {
     const { profile } = this.props;
-      return <Profile profile={profile} />;      
+    return <Profile profile={profile} />;
   }
 
   render() {
