@@ -41,14 +41,10 @@ export class HomePage extends React.Component {
 
   renderProfile() {
     const { profile } = this.props;
-    return profile.map(function (data) {
-      return (<div key={data.id}>
-        <Profile profile={data} />
-      </div>);
-    });
+    return <Profile profile={profile} />;
   }
-  render() {
 
+  render() {
     return (
       <div>
         <div className="jumbotron">
@@ -68,7 +64,7 @@ export class HomePage extends React.Component {
 
 HomePage.propTypes = {
   query: PropTypes.object,
-  profile: PropTypes.array,
+  profile: PropTypes.object,
   placeholder: PropTypes.string,
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
@@ -76,10 +72,10 @@ HomePage.propTypes = {
 
 function mapStateToProps(state) {
   let query = state.query ? state.query : { keyword: '', repo: '' };
-  let profile = state.search ? [state.search] : [];
+  let profile = state.search ? state.search : {};
   return {
     query: { keyword: query.keyword, repo: query.repo },
-    profile: profile,
+    profile,
     loading: state.ajaxCallsInProgress > 0
   };
 }
