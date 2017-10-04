@@ -41,13 +41,13 @@ export class HomePage extends React.Component {
 
   renderProfile() {
     const { profile } = this.props;
-      return <Profile profile={profile} />;      
+      return <Profile profile={profile} />;
   }
 
   render() {
     return (
       <div>
-        <div className="jumbotron">
+        <div className={`search-section ${this.props.profile ? 'search-done' : 'search-not-done'}`}>
           <SearchForm
             onSave={this.doSearch}
             onChange={this.updateSearchQuery}

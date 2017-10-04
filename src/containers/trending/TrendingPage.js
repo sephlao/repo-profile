@@ -47,7 +47,7 @@ export class TrendingPage extends React.Component {
   render() {
     return (
       <div>
-        <div className="jumbotron">
+        <div className={`search-section ${this.props.trending ? 'search-done' : 'search-not-done'}`}>
           <SearchForm
             onSave={this.doSearch}
             onChange={this.updateSearchQuery}

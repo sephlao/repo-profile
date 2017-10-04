@@ -10,7 +10,6 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
 
       <RadioInput
         name="repo"
-        label="Repository"
         value={query.repo}
         defaultOption={repos[0].value}
         options={repos}
@@ -19,7 +18,6 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
 
       <TextInput
         name="keyword"
-        label="Keyword *"
         value={query.keyword}
         placeholder={placeholder}
         onChange={onChange}

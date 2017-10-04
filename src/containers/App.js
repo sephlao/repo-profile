@@ -7,6 +7,7 @@ import HomePage from '../containers/home/HomePage';
 import TrendingPage from '../containers/trending/TrendingPage';
 import Loading from '../components/common/Loader';
 
+import 'font-awesome/css/font-awesome.css';
 import './App.scss';
 
 // This is a class-based component because the current
