@@ -10,7 +10,8 @@ export class TrendingPage extends React.Component {
     super(props, context);
 
     this.state = {
-      query: Object.assign({}, props.query),
+      query: (props.trending) ?
+        { ...props.query, keyword: props.trending.items[0].language } : Object.assign({}, props.query),
       placeholder: 'Technology',
       errors: {},
       saving: false,
