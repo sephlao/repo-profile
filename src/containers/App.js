@@ -7,6 +7,8 @@ import HomePage from '../containers/home/HomePage';
 import TrendingPage from '../containers/trending/TrendingPage';
 import Loading from '../components/common/Loader';
 
+import './App.scss';
+
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.

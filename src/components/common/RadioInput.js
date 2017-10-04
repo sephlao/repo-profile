@@ -7,14 +7,19 @@ const RadioInput = ({ name, label, onChange, defaultOption, value, error, option
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
-      <div className="field">
+      <br />
+      <div className="field btn-group" data-toggle="buttons">
         {options.map(option => {
-            return (<label className="radio-inline" key={option.value}>&nbsp;
-                    <input type="radio"
-                      name={name} value={option.value} onChange={onChange} 
-                      checked={value === option.value}/>&nbsp;{option.text}
-                    </label>);
-          })}
+          return (<label className={`btn btn-primary ${value === option.value ? "active" : ""}`}
+            key={option.value} htmlFor={option.value}>
+            <input type="radio"
+              name={name}
+              id={option.value}
+              checked={value === option.value}
+              onChange={onChange}
+              value={option.value} /> {option.text}
+          </label>);
+        })}
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>
