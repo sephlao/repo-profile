@@ -1,3 +1,30 @@
 .trending {
-
+  &--list {
+    .list-group-item {
+      display: block !important;
+    }
+    .repo-img {
+      width: 48px;
+    }
+    .repo-full-name {
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .repo-name {
+      font-size: 16px;
+      font-weight: bold;
+      i {
+        font-size: 14px;
+      }
+    }
+    .repo-desc {
+      text-align: justify;
+    }
+    .repo-counts {
+      p {
+        text-align: right;
+        margin-bottom: 5px !important;
+      }
+    }
+  }
 }
