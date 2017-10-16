@@ -1,0 +1,70 @@
+#query-loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  div.loader {
+    display: inherit;
+    width: 350px;
+    position: relative;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-filter: url(#goo);
+            filter: url(#goo);
+  }
+  div.loader:before {
+    content: "";
+    z-index: 1;
+    background: #4DB9FF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 40px #4DB9FF;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-animation: loading 1.5s infinite alternate ease-in-out;
+            animation: loading 1.5s infinite alternate ease-in-out;
+    -webkit-filter: blur(15px);
+            filter: blur(15px);
+  }
+  @-webkit-keyframes loading {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  @keyframes loading {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  div.loader > span {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: #4DB9FF;
+  }
+  div.loader:before,
+  div.loader > span {
+    border-radius: 100%;
+  }
+
+  svg {
+    display: none;
+  }
+
+}

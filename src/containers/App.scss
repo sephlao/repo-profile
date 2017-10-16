@@ -1,0 +1,22 @@
+nav {
+  text-align: center !important;
+  a {
+    font-size: 15px !important;
+  }
+}
+
+.search-section {
+  .active-repo-radio {
+    background-color: blue;
+  }
+  &.search-not-done {
+    padding-top: 30vh;
+  }
+  &.search-done {
+    padding-top: 0vh;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

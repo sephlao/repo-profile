@@ -6,11 +6,10 @@ import RadioInput from './common/RadioInput';
 const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) => {
   const repos = [{text: 'GitHub', value: 'github'},{text: 'BitBucket', value: 'bitbucket'}];
   return (
-    <form onSubmit={onSave} disabled={saving}>
+    <form onSubmit={onSave} disabled={saving} id="searchForm">
 
       <RadioInput
         name="repo"
-        label="Repository"
         value={query.repo}
         defaultOption={repos[0].value}
         options={repos}
@@ -19,11 +18,11 @@ const SearchForm = ({ query, placeholder ,onSave, onChange, saving, errors }) =>
 
       <TextInput
         name="keyword"
-        label="Keyword *"
         value={query.keyword}
         placeholder={placeholder}
         onChange={onChange}
-        error={errors.keyword} />
+        error={errors.keyword}
+        onSave={onSave}/>
 
       {/* <input
         type="submit"

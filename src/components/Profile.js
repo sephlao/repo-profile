@@ -10,7 +10,7 @@ const Profile = ({ profile }) => {
         <div className="card-body">
           <h2 className="card-title">{profile.name}</h2>
           <p className="card-subtitle mb-2 text-muted">{profile.login}</p>
-          <div style={{ margin: '24px 0' }}>          
+          <div style={{ margin: '24px 0' }}>
           <p className="card-text">{profile.bio}</p>
           {profile.email && <i> {profile.email}</i>}
           {profile.location && <i> {profile.location}</i>}
