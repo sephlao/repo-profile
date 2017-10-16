@@ -7,6 +7,31 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
+import url from 'url';
+import paths from './tools/paths';
+
+function ensureSlash(path, needsSlash) {
+  let hasSlash = path.endsWith('/');
+  if (hasSlash && !needsSlash) {
+      return path.substr(path, path.length - 1);
+  } else if (!hasSlash && needsSlash) {
+      return path + '/';
+  } else {
+      return path;
+  }
+}
+
+// We use "homepage" field to infer "public path" at which the app is served.
+// Webpack needs to know it to put the right <script> hrefs into HTML even in
+// single-page apps that may serve index.html for nested URLs like /todos/42.
+// We can't use a relative path in HTML because we don't want to load something
+// like /todos/42/static/js/bundle.7289d.js. We have to know the root.
+let homepagePath = require(paths.appPackageJson).homepage;
+let homepagePathname = homepagePath ? url.parse(homepagePath).pathname : '/';
+// Webpack uses `publicPath` to determine where the app is being served from.
+// It requires a trailing slash, or the file assets will get an incorrect path.
+let publicPath = ensureSlash(homepagePathname, true);
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEV__: false
@@ -21,7 +46,7 @@ export default {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath,
     filename: '[name].[chunkhash].js'
   },
   plugins: [
